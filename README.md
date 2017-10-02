@@ -1,5 +1,5 @@
 # Project_Nano
-Quadruped small robot
+Small quadruped robot
 
 Authors and developers:
 1. Amanda Justiniano
