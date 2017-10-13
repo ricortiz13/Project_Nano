@@ -46,6 +46,12 @@ public:
   /// Minimum potentiometer value that is seen at min joint degree.
   uint16_t _jointMinPot;
 
+  /// Maximum joint degree value that the joint can mechanically achieve.
+  uint8_t _jointMechMaxDeg;
+
+  /// Minimum joint degree value that the joint can mechanically achieve.
+  uint8_t _jointMechMinDeg;
+
   /// Pin location for servo.
   uint8_t _servoPin;
 
