@@ -13,12 +13,14 @@
  */
 #include "RobotJoint.h"
 //#include <Servo.h>
+Serial.begin(9600);
 
 
 void setup() {
   RobotJoint shoulderPitch(3,0);  
   shoulderPitch.manualCalibrate();
-  shoulderPitch.setAngle(180);
+  //shoulderPitch.autoCalibrate();
+  //shoulderPitch.setAngle(180);
   delay(1000);
   Serial.print(shoulderPitch.getAngle());
   shoulderPitch.off();
