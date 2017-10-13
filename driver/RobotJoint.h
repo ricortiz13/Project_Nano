@@ -46,10 +46,10 @@ public:
   /// Minimum potentiometer value that is seen at min joint degree.
   uint16_t _jointMinPot;
 
-  /// Maximum joint degree value that the joint can mechanically achieve.
+  /// Maximum joint degree limit value that the joint can mechanically achieve.
   uint8_t _jointMechMaxDeg;
 
-  /// Minimum joint degree value that the joint can mechanically achieve.
+  /// Minimum joint degree limit value that the joint can mechanically achieve.
   uint8_t _jointMechMinDeg;
 
   /// Pin location for servo.
@@ -88,16 +88,6 @@ public:
    *
    */
   void manualCalibrate(void);
-
-  /**
-   * Auto calibrates the servo pertaining to the joint
-   *
-   * A full pan ranging from the max and min possible displacement of the joint
-   * is performed and once the potentiomer indicates end points, it pans in the
-   * opposite direction
-   *
-   */
-  void autoCalibrate(void);
 
   /**
    * Ensures the servo is detached(off) after
