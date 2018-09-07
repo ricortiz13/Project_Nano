@@ -1,0 +1,11 @@
+py_library(
+  name = 'constants',
+  srcs = ['constants.py']
+)
+
+py_binary(
+  name = 'nano',
+  main = 'nano.py',
+  srcs = ['nano.py'],
+  deps = [':constants']
+)
