@@ -8,30 +8,29 @@ from iterator import List_Iterator
 
 class Calibrator:
     def __init__(self,servos):
-        self._servos = servos
-        self.iterator = List_Iterator(self._servos)
+        self.iterator = List_Iterator(servos)
     def calibrate (self, pwm_gen):
         joint = "0"
-        angle = ["0","90","180"]
+        angle = ["min","center","max"]
         pwm = 250
         i = 0
         while(not(self.iterator.isDone())):
-            print("Joint "+ joint + ", angle "+ angle[i]+" | PWM: " + str(pwm))
+            print("Joint "+ joint + ", set angle to "+ angle[i]+" | PWM: " + str(pwm))
             usr = input("Enter q[+], a[-], or z[submit]")
             if (usr == "q"):
                 pwm+=5
-                self.iterator.get_current().actuate(pwm_gen, pwm)
+                self.iterator.get_current().actuate(pwm)
             elif (usr == "a"):
                 pwm-=5
-                self.iterator.get_current().actuate(pwm_gen, pwm)
+                self.iterator.get_current().actuate(pwm)
             elif (usr == "z"):
                 #accept
                 if(i==0):
-                    self.iterator.get_current().set_deg0(pwm)
+                    self.iterator.get_current().set_min(pwm)
                 elif(i==1):
-                    self.iterator.get_current().set_deg90(pwm)
+                    self.iterator.get_current().set_center(pwm)
                 elif(i==2):
-                    self.iterator.get_current().set_deg180(pwm)
+                    self.iterator.get_current().set_max(pwm)
                     joint = str(int(joint)+1)
                     self.iterator.next()
                 i+=1

@@ -22,7 +22,7 @@ class Joints:
         self.joints = calibrator.read_cal()
 
 joints=Joints()
-#joints.calibrate_all()
+joints.calibrate_all()
 joints.load_joints()
-#joints.joints[0].actuate(joints._pwm,joints.joints[0]._deg90)
-joints.joints[0].off(joints._pwm)
+#joints.joints[0].actuate(joints._pwm,joints.joints[0]._center)
+joints.joints[0].actuate_deg(70)

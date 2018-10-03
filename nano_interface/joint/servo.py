@@ -2,28 +2,45 @@
 #
 
 class Servo:
-    def __init__(self,pin):
-        self._pos = 250
+    def __init__(self,pin,pwm_generator):
+        self._curr_pos = 250
+        self._curr_deg = 90
         self._pin = pin
-        self._deg0 = None
-        self._deg90 = None
-        self._deg180 = None
-        self._upper_limit = None
-        self._lower_limit = None
-    def actuate(self, pwm_generator, position):
-        self._pos = position
-        pwm_generator.set_pwm(self._pin,0,self._pos)
-    def on(self, pwm_generator):
-        pwm_generator.set_pwm(self._pin,0,self._pos)
-    def off(self, pwm_generator):
-        pwm_generator.set_pwm(self._pin,0,0)
-    def set_lower_limit(self, lower_limit):
-        self._lower_limit = lower_limit
-    def set_upper_limit(self, upper_limit):
-        self._upper_limit = upper_limit
-    def set_deg0(self, deg):
-        self._deg0 = deg
-    def set_deg90(self, deg):
-        self._deg90 = deg
-    def set_deg180(self, deg):
-        self._deg180 = deg
+        self._min = 250
+        self._center = 250
+        self._max = 250
+        self._deg_max = 90
+        self._deg_center = 90
+        self._deg_min = 90
+        self._pwm_board = pwm_generator
+    def actuate_pwm(self, pwm_pos):
+        self._curr_pos = pwm_pos
+        self._pwm_board.set_pwm(self._pin,0,self._curr_pos)
+    def actuate_deg(self, deg_pos):
+        # Convert to pwm
+        if (deg_pos == 90):
+            self._curr_pos = self._center
+        elif (deg_pos < 90):
+            #interpolate between min and center
+            self._curr_pos = ((self._center - self._min)/(self._deg_center - self._deg_min))
+            self._curr_pos = self._curr_pos * (deg_pos - self._deg_min)
+            self._curr_pos = seld._curr_pos + self._min
+            self._curr_pos = int(self._curr_pos)
+        else:
+            #interpolate between center and max
+            self._curr_pos = ((self._max - self._center)/(self._deg_max - self._deg_center))
+            self._curr_pos = self._curr_pos * (deg_pos - self._deg_center)
+            self._curr_pos = seld._curr_pos + self._center
+            self._curr_pos = int(self._curr_pos)
+
+        self._pwm_board.set_pwm(self._pin,0,self._curr_pos)
+    def on(self):
+        self._pwm_board.set_pwm(self._pin,0,self._curr_pos)
+    def off(self):
+        self._pwm_board.set_pwm(self._pin,0,0)
+    def set_min(self, deg):
+        self._min = deg
+    def set_center(self, deg):
+        self._center = deg
+    def set_max(self, deg):
+        self._max = deg
