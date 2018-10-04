@@ -17,7 +17,7 @@ class Joints:
         self._pwm.set_pwm_freq(60)
     def calibrate_all(self):#add filename
         calibrator = Calibrator(self.joints)
-        calibrator.calibrate()
+        calibrator.json_calibrate()
 
     def load_joints(self,filename="calibrator.pickle"):
         #Find file with calibrated joints
@@ -25,7 +25,7 @@ class Joints:
         self.joints = calibrator.read_cal(self._pwm,filename)
 
 joints=Joints()
-#joints.calibrate_all()
-joints.load_joints()
+joints.calibrate_all()
+#joints.load_joints()
 #-------joints.joints[0].actuate(joints._pwm,joints.joints[0]._center)
-joints.joints[0].actuate_deg(90)
+#joints.joints[0].actuate_deg(90)
