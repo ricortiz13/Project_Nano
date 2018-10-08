@@ -1,8 +1,8 @@
 {
     "0": {
         "pwm_center": 265,
-        "pwm_min": 570,
-        "pwm_max": 110
+        "pwm_min": 110,
+        "pwm_max": 570
     },
     "1": {
         "pwm_center": 255,
@@ -21,18 +21,18 @@
     },
     "4": {
         "pwm_center": 285,
-        "pwm_min": 370,
-        "pwm_max": 185
+        "pwm_min": 185,
+        "pwm_max": 370
     },
     "5": {
         "pwm_center": 285,
-        "pwm_min": 575,
-        "pwm_max": 110
+        "pwm_min": 110,
+        "pwm_max": 575
     },
     "6": {
         "pwm_center": 275,
-        "pwm_min": 560,
-        "pwm_max": 105
+        "pwm_min": 110,
+        "pwm_max": 560
     },
     "7": {
         "pwm_center": 275,
@@ -51,12 +51,12 @@
     },
     "10": {
         "pwm_center": 260,
-        "pwm_min": 325,
-        "pwm_max": 165
+        "pwm_min": 165,
+        "pwm_max": 325
     },
     "11": {
         "pwm_center": 310,
-        "pwm_min": 560,
-        "pwm_max": 110
+        "pwm_min": 110,
+        "pwm_max": 560
     }
 }

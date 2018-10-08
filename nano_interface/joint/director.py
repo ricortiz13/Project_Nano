@@ -2,7 +2,8 @@
 #
 
 class Director:
-    def __init__(self,builder)
+    def __init__(self,builder):
+        self.builder = builder
     def build(self):
         self.builder.build()
     def build_lean(self):

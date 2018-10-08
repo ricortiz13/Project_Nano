@@ -4,6 +4,8 @@
 from servo import Servo
 from calibrator import Calibrator
 from drivers.PCA9685 import PCA9685
+from iterator import List_Iterator
+import time
 
 class Joints:
     def __init__(self):
@@ -24,8 +26,16 @@ class Joints:
         calibrator = Calibrator(self.joints)
         self.joints = calibrator.read_cal(self._pwm,filename)
 
-joints=Joints()
-joints.calibrate_all()
+    def actuate_all(self, angle):
+        iterator = List_Iterator(self.joints)
+        while (not(iterator.isDone())):
+            iterator.get_current().actuate_deg(angle)
+            iterator.next()
+            time.sleep(1)
+
+#joints=Joints()
+#joints.calibrate_all()
+#joints.actuate_all(90)
 #joints.load_joints()
 #-------joints.joints[0].actuate(joints._pwm,joints.joints[0]._center)
 #joints.joints[0].actuate_deg(90)
