@@ -21,7 +21,10 @@ class Servo:
         self._curr_pwm = pwm_pos
         self._pwm_board.set_pwm(self._pin,0,self._curr_pwm)
     def actuate_deg(self, deg_pos):
+        #TODO convert repeated code into functions
         # Convert to pwm
+        if (self._polarity_on):
+            deg_pos = 180 - deg_pos
         if (deg_pos == 90):
             self._curr_pwm = self._pwm_center
         elif (deg_pos < 90):
@@ -36,7 +39,7 @@ class Servo:
             self._curr_pwm = self._curr_pwm * (deg_pos - self._deg_center)
             self._curr_pwm = self._curr_pwm + self._pwm_center
             self._curr_pwm = int(self._curr_pwm)
-
+        
         self._pwm_board.set_pwm(self._pin,0,self._curr_pwm)
         self._curr_deg = deg_pos
     def on(self):
@@ -63,26 +66,28 @@ class Servo:
         if (polarity_on and not(self._polarity_on)):
             #polarized
             self._polarity_on = True
-            polar_switch = self._pwm_min
-            self._pwm_min = self._pwm_max
-            self._pwm_max = polar_switch
+            #polar_switch = self._pwm_min
+            #self._pwm_min = self._pwm_max
+            #self._pwm_max = polar_switch
 
-            polar_switch = self._deg_min
-            self._deg_min = self._deg_max
-            self._deg_max = polar_switch
+            #polar_switch = self._deg_min
+            #self._deg_min = self._deg_max
+            #self._deg_max = polar_switch
 
         elif (not(polarity_on) and self._polarity_on):
             #normal way
             self._polarity_on = False
-            polar_switch = self._pwm_min
-            self._pwm_min = self._pwm_max
-            self._pwm_max = polar_switch
+            #polar_switch = self._pwm_min
+            #self._pwm_min = self._pwm_max
+            #self._pwm_max = polar_switch
 
-            polar_switch = self._deg_min
-            self._deg_min = self._deg_max
-            self._deg_max = polar_switch
+            #polar_switch = self._deg_min
+            #self._deg_min = self._deg_max
+            #self._deg_max = polar_switch
 
-
-    ##@TODO: This method is obsolete. Delete once all dependencies are removed
-    def reference(self, ref=None):
-        self._pwm_board = ref
+if __name__ == "__main__":
+    #turn all off
+    from drivers.PCA9685 import PCA9685
+    pwm = PCA9685()
+    for i in range(0,12):
+        Servo(i,pwm).off()
