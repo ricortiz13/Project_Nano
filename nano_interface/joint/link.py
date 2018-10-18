@@ -1,17 +1,6 @@
 ## @file: link.py
 #
 
-class Joint_V2:
-    def __init__(self):
-        self.__max = 180
-        self.__min = 0
-        self.__curr_pos = 90
-    def __init__(self, j_range):
-        self.__max = 90 + j_range
-        self.__min = 90 - j_range
-    def move(self, pos):
-
-
 class Link:
     def __init__(self):
         self.__joint = None
