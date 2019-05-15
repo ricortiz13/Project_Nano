@@ -1,8 +1,8 @@
 ## @file: robot.py
 #
 import math
-from link import Link
-from drivers.PCA9685 import PCA9685
+from .link import Link
+from .drivers.PCA9685 import PCA9685
 
 
 

@@ -3,9 +3,9 @@
 #
 
 import pickle
-from servo import Servo
-from iterator import List_Iterator
-from json_manager import JSON_Manager
+from .servo import Servo
+from .iterator import List_Iterator
+from .json_manager import JSON_Manager
 
 class Calibrator:
     def __init__(self,servos):

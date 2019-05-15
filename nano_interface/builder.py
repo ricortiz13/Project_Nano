@@ -2,16 +2,16 @@
 #
 
 #  Inclusions required by Servo_Builder class
-from servo import Servo
-from json_manager import JSON_Manager
+from .servo import Servo
+from .json_manager import JSON_Manager
 
 #  Inclusions required by Leg_Builder class
-from link import Link
+from .link import Link
 
 #  Inclusions required by Robot_Builder class
-from robot import Robot
+from .robot import Robot
 
-from drivers.PCA9685 import PCA9685
+from .drivers.PCA9685 import PCA9685
 
 ## @class Builder
 #  Abstract class used to define all subsequent builders

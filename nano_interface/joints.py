@@ -1,10 +1,10 @@
 ##  @filename: joints.py
 #
 
-from servo import Servo
-from calibrator import Calibrator
-from drivers.PCA9685 import PCA9685
-from iterator import List_Iterator
+from .servo import Servo
+from .calibrator import Calibrator
+from .drivers.PCA9685 import PCA9685
+from .iterator import List_Iterator
 import time
 
 class Joints:
